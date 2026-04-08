@@ -927,7 +927,7 @@ class EdgeDetectionApp:
             train_data, val_data, test_data = self.dataset.load_dataset()
             if train_data[0] is not None:
                 dataset_ready = True
-        except:
+        except (FileNotFoundError, OSError):
             pass
 
         if not dataset_ready:
