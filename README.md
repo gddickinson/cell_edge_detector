@@ -157,3 +157,7 @@ app.batch_process(
 - Experiment with different model architectures
 - Implement additional post-processing techniques
 - Add time series analysis for dynamic cell movements
+
+
+---
+*Built with AI assistance from [Claude (Anthropic)](https://claude.com/).*
