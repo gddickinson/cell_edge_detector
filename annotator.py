@@ -224,7 +224,11 @@ class AnnotationTool:
             parts = filename.split('_')
 
             original_prefix = '_'.join(parts[:-2])
-            matched_dic_files = [f for f in self.data_loader.dic_files if original_prefix in f]
+            # exact file-name match: a substring test attached s1_DIC masks to rs1_DIC.tif
+            matched_dic_files = [
+                f for f in self.data_loader.dic_files
+                if os.path.splitext(os.path.basename(f))[0] == original_prefix
+            ]
 
             if matched_dic_files:
                 dic_path = matched_dic_files[0]
