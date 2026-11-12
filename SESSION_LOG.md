@@ -17,3 +17,10 @@
 - Not changed: the legacy `cell_edge_detection.py` (kept for reference) still has the same four bugs; the root copies of
   `mac_gpu_setup.py` / `tensorflow-metal-setup.py` duplicate `tools/`.
 - Tests: 41 passed, 8 skipped without TensorFlow; 48 passed, 1 skipped with TensorFlow 2.20 (scratch venv).
+
+## 2026-11-12: archive legacy file, remove duplicate GPU scripts
+
+- Moved `cell_edge_detection.py` to `_archive/` with a README noting it is superseded and listing its known bugs.
+- Removed the root `mac_gpu_setup.py` and `tensorflow-metal-setup.py` (byte-identical to `tools/`; nothing imported them).
+- README quick start now imports `EdgeDetectionApp` from `inference`; `tools/tensorflow-metal-setup.py` suggests
+  `python inference.py`; INTERFACE.md and ROADMAP.md updated.

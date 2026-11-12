@@ -2,7 +2,7 @@
 
 ## Module Structure
 
-### Core Modules (split from `cell_edge_detection.py`)
+### Core Modules (split from the legacy `_archive/cell_edge_detection.py`)
 
 | File | Purpose | Key Classes/Functions |
 |------|---------|----------------------|
@@ -18,7 +18,7 @@
 
 | File | Purpose | Notes |
 |------|---------|-------|
-| `cell_edge_detection.py` | Original monolithic file (1077 lines) | Retained for reference; use split modules instead |
+| `_archive/cell_edge_detection.py` | Original monolithic file (1077 lines) | Superseded, has known bugs (see `_archive/README.md`); do not use |
 
 ### Tools (setup utilities, not core project code)
 

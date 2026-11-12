@@ -36,7 +36,7 @@ The Cell Edge Detection System uses a U-Net architecture to detect cell edges in
 ### 1. Initialize the application
 
 ```python
-from cell_edge_detection import EdgeDetectionApp
+from inference import EdgeDetectionApp
 
 # Create and initialize the application
 app = EdgeDetectionApp()

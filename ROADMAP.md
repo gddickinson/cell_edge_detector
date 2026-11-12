@@ -1,6 +1,8 @@
 # Cell Edge Detector -- Roadmap
 
 ## Current State
+_Update 2026-11-12: the split is done; the monolithic file is now `_archive/cell_edge_detection.py` and the GPU setup scripts live only in `tools/`._
+
 A U-Net-based deep learning system for cell edge detection in TIRF/DIC microscopy images. All code lives in a single large file `cell_edge_detection.py` containing `DataLoader`, `UNetModel`, annotation tools, training pipeline, and batch processing. Includes GPU setup scripts (`mac_gpu_setup.py`, `tensorflow-metal-setup.py`). Has `models/` and `test_data/` directories. No tests, no `requirements.txt`.
 
 ## Short-term Improvements

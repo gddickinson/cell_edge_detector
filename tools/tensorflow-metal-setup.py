@@ -276,7 +276,7 @@ To use TensorFlow with GPU support:
 5. For your cell edge detection project, make sure to activate the environment
    before running your code:
    conda activate {env_name}
-   python cell_edge_detection.py
+   python inference.py
 """)
 
 def main():
