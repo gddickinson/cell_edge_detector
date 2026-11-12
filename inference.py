@@ -221,14 +221,15 @@ class EdgeDetectionApp:
 
         try:
             train_data, val_data, test_data = self.dataset.load_dataset()
-            if train_data[0] is not None:
+            # load_dataset returns (None, None, None) when no dataset has been saved yet
+            if train_data is not None and train_data[0] is not None:
                 dataset_ready = True
         except (FileNotFoundError, OSError) as e:
             logger.debug("Could not load existing dataset: %s", e)
 
         if not dataset_ready:
             train_data, val_data, test_data = self.dataset.prepare_dataset()
-            if train_data[0] is None:
+            if train_data is None or train_data[0] is None:
                 logger.error("Failed to prepare dataset. Please annotate some images first.")
                 return None
 

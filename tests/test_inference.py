@@ -81,5 +81,16 @@ class TestRefineEdgeWidth:
         assert set(edges.sum(axis=1).astype(int)) == {width}
 
 
+class TestTrainWithoutData:
+    """train_model with no saved dataset and no annotations logs an error and returns None (regression: TypeError)."""
+
+    def test_returns_none(self, tmp_path):
+        from inference import EdgeDetectionApp
+
+        app = EdgeDetectionApp(data_dir=str(tmp_path))
+        app.initialize()
+        assert app.train_model(epochs=1) is None
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
