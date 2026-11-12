@@ -105,8 +105,10 @@ class EdgeDetector:
                         edges[x, y] = 1
 
                         if edge_width > 1:
-                            for dx in range(-edge_width // 2, edge_width // 2 + 1):
-                                for dy in range(-edge_width // 2, edge_width // 2 + 1):
+                            # exactly edge_width offsets, e.g. 2 -> (0, 1), 3 -> (-1, 0, 1)
+                            offsets = range(-((edge_width - 1) // 2), edge_width // 2 + 1)
+                            for dx in offsets:
+                                for dy in offsets:
                                     nx, ny = x + dx, y + dy
                                     if 0 <= nx < edges.shape[0] and 0 <= ny < edges.shape[1]:
                                         edges[nx, ny] = 1

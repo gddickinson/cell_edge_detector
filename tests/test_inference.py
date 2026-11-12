@@ -66,5 +66,20 @@ class TestEdgeDetectionApp:
         assert len(app.data_loader.dic_files) == 0
 
 
+class TestRefineEdgeWidth:
+    """edge_width is the number of pixels across the drawn edge (regression: it used to be edge_width + 1)."""
+
+    @pytest.mark.parametrize("width", [2, 3, 4, 5])
+    def test_edge_width_matches_request(self, width):
+        from inference import EdgeDetector
+
+        prediction = np.zeros((21, 21))
+        prediction[:, 10:] = 1.0  # one straight vertical edge
+        edges = EdgeDetector(None).refine_edges(prediction, threshold=0.5, edge_width=width)
+        # every row crosses the edge once, so each row holds exactly `width` edge pixels
+        assert int(edges[10].sum()) == width
+        assert set(edges.sum(axis=1).astype(int)) == {width}
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
