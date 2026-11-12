@@ -11,6 +11,7 @@ import logging
 
 import numpy as np
 import matplotlib.pyplot as plt
+import tifffile
 from skimage import io, transform
 
 logger = logging.getLogger(__name__)
@@ -62,7 +63,12 @@ class DataLoader:
             return None
 
         try:
-            img_stack = io.imread(file_path)
+            if file_path.lower().endswith(('.tif', '.tiff')):
+                # tifffile keeps (frames, height, width); skimage.io.imread reads a 3- or
+                # 4-frame stack as one RGB/RGBA image of shape (height, width, frames)
+                img_stack = tifffile.imread(file_path)
+            else:
+                img_stack = io.imread(file_path)
 
             if len(img_stack.shape) == 2:
                 img_stack = np.expand_dims(img_stack, axis=0)

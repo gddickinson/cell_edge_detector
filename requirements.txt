@@ -6,6 +6,7 @@ tensorflow-metal>=1.0.0  # Apple Silicon GPU support (macOS only)
 # Image processing
 opencv-python>=4.7.0
 scikit-image>=0.20.0
+tifffile>=2023.1.1
 
 # Numerical computing
 numpy>=1.23.0

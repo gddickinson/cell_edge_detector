@@ -99,5 +99,20 @@ class TestDataLoaderWithFiles:
             assert result.shape == (5, 64, 64)
 
 
+    @pytest.mark.parametrize("frames", [1, 2, 3, 4, 5])
+    def test_short_stacks_keep_frame_axis(self, tmp_path, frames):
+        """3- and 4-frame stacks must not be read as RGB/RGBA images (regression: shape came back (64, 48, 3))."""
+        import tifffile
+
+        stack = np.random.randint(0, 4000, (frames, 64, 48)).astype(np.uint16)
+        filepath = str(tmp_path / "cell_DIC.tif")
+        tifffile.imwrite(filepath, stack)
+
+        result = DataLoader(str(tmp_path)).load_tiff_stack(filepath)
+
+        assert result.shape == (frames, 64, 48)
+        np.testing.assert_array_equal(result, stack)
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
