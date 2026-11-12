@@ -17,6 +17,22 @@ from matplotlib.path import Path
 logger = logging.getLogger(__name__)
 
 
+def polygon_mask(verts, shape: tuple) -> np.ndarray:
+    """Boolean mask of the pixels whose centres (x=column, y=row) lie inside the lasso polygon.
+
+    Parameters
+    ----------
+    verts : array-like
+        Polygon vertices as (x, y) pairs in pixel coordinates.
+    shape : tuple
+        (height, width) of the image.
+    """
+    height, width = shape[:2]
+    x, y = np.meshgrid(np.arange(width), np.arange(height))
+    points = np.vstack((x.flatten(), y.flatten())).T
+    return Path(np.asarray(verts)).contains_points(points).reshape(height, width)
+
+
 class AnnotationTool:
     """
     Tool for annotating cell boundaries in microscopy images.
@@ -146,14 +162,7 @@ class AnnotationTool:
             return
 
         verts = np.asarray(verts)
-        path = Path(verts)
-
-        height, width = self.current_dic.shape
-        x, y = np.meshgrid(np.arange(width), np.arange(height))
-        points = np.vstack((x.flatten(), y.flatten())).T
-
-        mask = path.contains_points(points)
-        mask = mask.reshape(height, width)
+        mask = polygon_mask(verts, self.current_dic.shape)
 
         self.mask[mask] = 1
         self.points.append(verts)

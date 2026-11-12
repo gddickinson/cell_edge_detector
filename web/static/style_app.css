@@ -1,0 +1,35 @@
+/* Project accents (teal = fluorescence, red = detected edges, as the repo draws them; periwinkle) and page styles. */
+:root { --accent:#5cf2c4; --accent2:#ff5470; --accent3:#8fb3ff; --glow:rgba(92,242,196,.13); }
+button, .btn { color:#03140f; }
+.seg button.on { color:#03140f; }
+main:focus, main:focus-visible { outline:none; }
+/* architecture */
+.unet { width:100%; height:auto; display:block; font:11px var(--mono); }
+.unet text { fill:var(--ink); } .unet .sub { fill:var(--mute); font-size:10px; }
+.unet .enc { fill:color-mix(in srgb, var(--accent) 22%, transparent); stroke:var(--accent); }
+.unet .dec { fill:color-mix(in srgb, var(--accent3) 22%, transparent); stroke:var(--accent3); }
+.unet .mid { fill:color-mix(in srgb, var(--accent2) 22%, transparent); stroke:var(--accent2); }
+.unet .io { fill:rgba(255,255,255,.05); stroke:var(--mute); }
+.unet .skip { stroke:var(--accent2); stroke-dasharray:4 4; fill:none; }
+.unet .flow { stroke:var(--mute); fill:none; marker-end:url(#arr); }
+.legend { display:flex; flex-wrap:wrap; gap:4px 16px; font-size:12px; color:var(--mute); margin-top:6px; }
+.legend i { display:inline-block; width:14px; height:10px; margin-right:6px; vertical-align:middle; border-radius:2px; }
+td.num, th.num { text-align:right; font-family:var(--mono); white-space:nowrap; }
+tr.blk td { color:var(--accent2); font:12px var(--mono); text-transform:uppercase; letter-spacing:.08em; padding-top:12px; }
+/* pipeline */
+.steps { counter-reset:step; display:grid; gap:12px; }
+.step { position:relative; padding-left:54px; }
+.step::before { counter-increment:step; content:counter(step); position:absolute; left:16px; top:16px; width:26px; height:26px;
+  border-radius:50%; border:2px solid var(--accent); color:var(--accent); font:600 13px/22px var(--mono); text-align:center; }
+.step h3 { margin-top:0; }
+.split { display:flex; height:26px; border-radius:4px; overflow:hidden; font:12px/26px var(--mono); margin:8px 0; max-width:520px; }
+.split span { text-align:center; color:#03140f; white-space:nowrap; overflow:hidden; }
+/* edge lab and predict */
+.lab-stage { position:relative; background:#000; border:1px solid var(--line); border-radius:6px; touch-action:none; }
+.lab-stage canvas { display:block; width:100%; height:auto; image-rendering:pixelated; cursor:crosshair; }
+.stats { font:13px var(--mono); color:var(--mute); margin-top:8px; }
+.stats b { color:var(--ink); }
+.figs { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+.figs figure { margin:0; } .figs img { width:100%; height:auto; display:block; border:1px solid var(--line); border-radius:4px; image-rendering:pixelated; }
+.figs figcaption { font-size:12px; color:var(--mute); margin-top:4px; }
+.seg { margin-top:6px; }

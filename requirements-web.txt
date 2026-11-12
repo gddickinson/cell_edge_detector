@@ -1,0 +1,13 @@
+# Web interface (python run_web.py), its tests and the static-site build. The core project needs requirements.txt.
+# TensorFlow is optional here: without it the web app shows everything except predictions with a trained model.
+fastapi==0.162.2
+httpx==0.28.1
+pytest==9.2.0
+uvicorn==0.54.0
+python-multipart==0.0.33
+numpy==2.5.4
+scikit-image==0.26.0
+scikit-learn==1.9.1
+h5py==3.16.0
+matplotlib==3.11.2
+tifffile==2026.11.8

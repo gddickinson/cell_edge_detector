@@ -1,0 +1,351 @@
+{
+ "tensorflow": "2.20.0",
+ "input_shape": [
+  64,
+  64,
+  2
+ ],
+ "total_params": 31031169,
+ "layers": [
+  {
+   "name": "input_layer",
+   "kind": "InputLayer",
+   "shape": [
+    64,
+    64,
+    2
+   ],
+   "params": 0
+  },
+  {
+   "name": "conv2d",
+   "kind": "Conv2D",
+   "shape": [
+    64,
+    64,
+    64
+   ],
+   "params": 1216
+  },
+  {
+   "name": "conv2d_1",
+   "kind": "Conv2D",
+   "shape": [
+    64,
+    64,
+    64
+   ],
+   "params": 36928
+  },
+  {
+   "name": "max_pooling2d",
+   "kind": "MaxPooling2D",
+   "shape": [
+    32,
+    32,
+    64
+   ],
+   "params": 0
+  },
+  {
+   "name": "conv2d_2",
+   "kind": "Conv2D",
+   "shape": [
+    32,
+    32,
+    128
+   ],
+   "params": 73856
+  },
+  {
+   "name": "conv2d_3",
+   "kind": "Conv2D",
+   "shape": [
+    32,
+    32,
+    128
+   ],
+   "params": 147584
+  },
+  {
+   "name": "max_pooling2d_1",
+   "kind": "MaxPooling2D",
+   "shape": [
+    16,
+    16,
+    128
+   ],
+   "params": 0
+  },
+  {
+   "name": "conv2d_4",
+   "kind": "Conv2D",
+   "shape": [
+    16,
+    16,
+    256
+   ],
+   "params": 295168
+  },
+  {
+   "name": "conv2d_5",
+   "kind": "Conv2D",
+   "shape": [
+    16,
+    16,
+    256
+   ],
+   "params": 590080
+  },
+  {
+   "name": "max_pooling2d_2",
+   "kind": "MaxPooling2D",
+   "shape": [
+    8,
+    8,
+    256
+   ],
+   "params": 0
+  },
+  {
+   "name": "conv2d_6",
+   "kind": "Conv2D",
+   "shape": [
+    8,
+    8,
+    512
+   ],
+   "params": 1180160
+  },
+  {
+   "name": "conv2d_7",
+   "kind": "Conv2D",
+   "shape": [
+    8,
+    8,
+    512
+   ],
+   "params": 2359808
+  },
+  {
+   "name": "dropout",
+   "kind": "Dropout",
+   "shape": [
+    8,
+    8,
+    512
+   ],
+   "params": 0
+  },
+  {
+   "name": "max_pooling2d_3",
+   "kind": "MaxPooling2D",
+   "shape": [
+    4,
+    4,
+    512
+   ],
+   "params": 0
+  },
+  {
+   "name": "conv2d_8",
+   "kind": "Conv2D",
+   "shape": [
+    4,
+    4,
+    1024
+   ],
+   "params": 4719616
+  },
+  {
+   "name": "conv2d_9",
+   "kind": "Conv2D",
+   "shape": [
+    4,
+    4,
+    1024
+   ],
+   "params": 9438208
+  },
+  {
+   "name": "dropout_1",
+   "kind": "Dropout",
+   "shape": [
+    4,
+    4,
+    1024
+   ],
+   "params": 0
+  },
+  {
+   "name": "conv2d_transpose",
+   "kind": "Conv2DTranspose",
+   "shape": [
+    8,
+    8,
+    512
+   ],
+   "params": 2097664
+  },
+  {
+   "name": "concatenate",
+   "kind": "Concatenate",
+   "shape": [
+    8,
+    8,
+    1024
+   ],
+   "params": 0
+  },
+  {
+   "name": "conv2d_10",
+   "kind": "Conv2D",
+   "shape": [
+    8,
+    8,
+    512
+   ],
+   "params": 4719104
+  },
+  {
+   "name": "conv2d_11",
+   "kind": "Conv2D",
+   "shape": [
+    8,
+    8,
+    512
+   ],
+   "params": 2359808
+  },
+  {
+   "name": "conv2d_transpose_1",
+   "kind": "Conv2DTranspose",
+   "shape": [
+    16,
+    16,
+    256
+   ],
+   "params": 524544
+  },
+  {
+   "name": "concatenate_1",
+   "kind": "Concatenate",
+   "shape": [
+    16,
+    16,
+    512
+   ],
+   "params": 0
+  },
+  {
+   "name": "conv2d_12",
+   "kind": "Conv2D",
+   "shape": [
+    16,
+    16,
+    256
+   ],
+   "params": 1179904
+  },
+  {
+   "name": "conv2d_13",
+   "kind": "Conv2D",
+   "shape": [
+    16,
+    16,
+    256
+   ],
+   "params": 590080
+  },
+  {
+   "name": "conv2d_transpose_2",
+   "kind": "Conv2DTranspose",
+   "shape": [
+    32,
+    32,
+    128
+   ],
+   "params": 131200
+  },
+  {
+   "name": "concatenate_2",
+   "kind": "Concatenate",
+   "shape": [
+    32,
+    32,
+    256
+   ],
+   "params": 0
+  },
+  {
+   "name": "conv2d_14",
+   "kind": "Conv2D",
+   "shape": [
+    32,
+    32,
+    128
+   ],
+   "params": 295040
+  },
+  {
+   "name": "conv2d_15",
+   "kind": "Conv2D",
+   "shape": [
+    32,
+    32,
+    128
+   ],
+   "params": 147584
+  },
+  {
+   "name": "conv2d_transpose_3",
+   "kind": "Conv2DTranspose",
+   "shape": [
+    64,
+    64,
+    64
+   ],
+   "params": 32832
+  },
+  {
+   "name": "concatenate_3",
+   "kind": "Concatenate",
+   "shape": [
+    64,
+    64,
+    128
+   ],
+   "params": 0
+  },
+  {
+   "name": "conv2d_16",
+   "kind": "Conv2D",
+   "shape": [
+    64,
+    64,
+    64
+   ],
+   "params": 73792
+  },
+  {
+   "name": "conv2d_17",
+   "kind": "Conv2D",
+   "shape": [
+    64,
+    64,
+    64
+   ],
+   "params": 36928
+  },
+  {
+   "name": "conv2d_18",
+   "kind": "Conv2D",
+   "shape": [
+    64,
+    64,
+    1
+   ],
+   "params": 65
+  }
+ ]
+}

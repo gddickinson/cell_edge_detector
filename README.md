@@ -27,7 +27,7 @@ The Cell Edge Detection System uses a U-Net architecture to detect cell edges in
 1. Clone or download the project code
 2. Install the required dependencies:
    ```
-   pip install tensorflow opencv-python numpy matplotlib scikit-image h5py
+   pip install -r requirements.txt
    ```
 3. Place your TIRF and DIC microscopy images in the data directory
 
@@ -145,6 +145,29 @@ app.batch_process(
     edge_width=1
 )
 ```
+
+## Web interface
+
+A local web app and a static site (GitHub Pages: https://gddickinson.github.io/cell_edge_detector/) show the
+U-Net architecture layer by layer, the training pipeline with the code's defaults, and an **edge lab** where you draw
+cell outlines (as in the annotation tool) or load a prediction map and extract edges with `refine_edges`. The repository
+contains no trained weights and no microscopy data, so neither shows model predictions of its own; the local app's
+**Predict** page runs a model you have trained (`models/**/best_model.h5`) on an uploaded TIRF/DIC pair.
+
+```
+pip install -r requirements-web.txt   # add tensorflow for the Predict page
+python run_web.py                     # http://127.0.0.1:8147
+python -m pytest -q tests             # includes tests/test_web.py and the JS engine's node test
+python scripts/build_static.py        # static site in site/ (published by .github/workflows/pages.yml)
+```
+
+On the static site the edge lab runs a JavaScript port (`web/static/edge_engine.js`) of `refine_edges`, the lasso
+fill and the percentile stretch, checked against the Python output by `web/static/edge_engine.test.mjs`; in the local
+app the lab also runs the Python function and reports that the two agree.
+
+| Architecture | Edge lab | Pipeline |
+|---|---|---|
+| ![Architecture](docs/img/architecture.png) | ![Edge lab](docs/img/edges.png) | ![Pipeline](docs/img/pipeline.png) |
 
 ## Troubleshooting
 
